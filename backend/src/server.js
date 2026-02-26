@@ -1,7 +1,10 @@
-const app = require('./app');
+import dotenv from 'dotenv';
+import app from './app.js';
 
-const port = process.env.PORT || 4000;
+dotenv.config();
 
-app.listen(port, () => {
-  console.log(`Backend API running on port ${port}`);
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });
