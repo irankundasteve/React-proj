@@ -1,0 +1,116 @@
+openapi: 3.0.3
+info:
+  title: Food Ordering Starter API
+  version: 1.0.0
+servers:
+  - url: http://localhost:4000
+paths:
+  /api/auth/register:
+    post:
+      summary: Register user
+  /api/auth/login:
+    post:
+      summary: Login user
+  /api/auth/forgot:
+    post:
+      summary: Request password reset
+  /api/auth/reset:
+    post:
+      summary: Reset password
+  /api/foods/categories:
+    get:
+      summary: List categories
+  /api/restaurants:
+    get:
+      summary: List restaurants
+  /api/foods:
+    get:
+      summary: List foods
+  /api/foods/{id}:
+    get:
+      summary: Get food details
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+  /api/foods/search:
+    get:
+      summary: Search catalog
+      parameters:
+        - in: query
+          name: q
+          schema:
+            type: string
+  /api/cart:
+    get:
+      summary: Get cart
+      security: [{ bearerAuth: [] }]
+  /api/cart/items:
+    post:
+      summary: Add cart item
+      security: [{ bearerAuth: [] }]
+  /api/cart/items/{foodId}:
+    patch:
+      summary: Update cart item
+      security: [{ bearerAuth: [] }]
+    delete:
+      summary: Remove cart item
+      security: [{ bearerAuth: [] }]
+  /api/orders:
+    post:
+      summary: Place order
+      security: [{ bearerAuth: [] }]
+    get:
+      summary: List user orders
+      security: [{ bearerAuth: [] }]
+  /api/orders/{id}:
+    get:
+      summary: Order detail
+      security: [{ bearerAuth: [] }]
+  /api/orders/{id}/timeline:
+    get:
+      summary: Order status timeline
+      security: [{ bearerAuth: [] }]
+  /api/users/me:
+    get:
+      summary: Get profile
+      security: [{ bearerAuth: [] }]
+    patch:
+      summary: Update profile
+      security: [{ bearerAuth: [] }]
+  /api/addresses:
+    get:
+      summary: List addresses
+      security: [{ bearerAuth: [] }]
+    post:
+      summary: Create address
+      security: [{ bearerAuth: [] }]
+  /api/addresses/{id}:
+    patch:
+      summary: Update address
+      security: [{ bearerAuth: [] }]
+    delete:
+      summary: Delete address
+      security: [{ bearerAuth: [] }]
+  /api/payments:
+    get:
+      summary: List payment methods
+      security: [{ bearerAuth: [] }]
+    post:
+      summary: Create payment method
+      security: [{ bearerAuth: [] }]
+  /api/payments/{id}:
+    patch:
+      summary: Update payment method
+      security: [{ bearerAuth: [] }]
+    delete:
+      summary: Delete payment method
+      security: [{ bearerAuth: [] }]
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
